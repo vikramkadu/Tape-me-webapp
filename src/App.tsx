@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import { useLocation } from 'react-router-dom';
+import tapimg from './assets/images/tap.png'
 
 const GET_USER = gql`
   query GetUser($id: String!) {
@@ -68,8 +69,9 @@ const App: React.FC = () => {
         {userId ? (
           <>
             <p>User ID: {userId}</p>
-            <p>Coins: {coins}</p>
-            <button onClick={handleTap} className="tap-button">Tap Me!</button>
+            <h2>💰 {coins}</h2>
+            <img src={tapimg} onClick={handleTap} className='tap-img' >
+            </img>
           </>
         ) : (
           <p>Connecting to wallet...</p>
