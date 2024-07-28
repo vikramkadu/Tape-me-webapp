@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { useQuery, useMutation, gql } from '@apollo/client';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const GET_USER = gql`
   query GetUser($id: String!) {
