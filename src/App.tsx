@@ -50,7 +50,6 @@ const App: React.FC = () => {
     }
   }, [location.pathname]);
 
-  console.log('userId',userId)
 
 
   const handleTap = async () => {
