@@ -2,7 +2,7 @@
 
 ## Overview
 
-TapMe is a web application where users can tap an image to earn coins. Users can connect their TON wallets to interact with the application and redeem their coins for Jettons on the TON blockchain. The application consists of a React frontend and a Node.js backend.
+TapMe is a web application where users can tap an image to earn coins.The application consists of a React frontend and a Node.js backend.
 
 ---
 
@@ -17,7 +17,7 @@ TapMe is a web application where users can tap an image to earn coins. Users can
 
 1. Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/vikramkadu/Tape-me-webapp.git
     cd tapme-frontend
     ```
 
