@@ -44,6 +44,10 @@ body::before {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.App p{
+  padding-top: 40px;
+}
+
 .App-header {
   margin-bottom: 20px;
   display: flex;

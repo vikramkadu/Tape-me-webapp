@@ -29,9 +29,8 @@ TapMe is a web application where users can tap an image to earn coins. Users can
 3. Set up environment variables:
     Create a `.env` file in the root directory and add the following variables:
     ```env
-    REACT_APP_SUPABASE_URL=<your-supabase-url>
-    REACT_APP_SUPABASE_ANON_KEY=<your-supabase-anon-key>
-    ```
+    REACT_APP_BASE_URL=<your-supabase-url>
+    REACT_APP_MANIFEST_URL=<your-manifest-url>
 
 4. Start the development server:
     ```bash
