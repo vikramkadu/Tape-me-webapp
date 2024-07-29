@@ -3,6 +3,8 @@ import './App.css';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import { useLocation } from 'react-router-dom';
 import tapimg from './assets/images/tap.png'
+import tonConnect from './tonConnect';
+import { TonConnectButton } from '@tonconnect/ui-react';
 
 const GET_USER = gql`
   query GetUser($id: String!) {
@@ -22,13 +24,12 @@ const UPDATE_USER = gql`
   }
 `;
 
-
 const App: React.FC = () => {
   const [coins, setCoins] = useState(0);
-  const [userId, setUserId] = useState<string >();
-  const [walletAddress, setWalletAddress] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string>();
+  // const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
-  const { data, refetch } = useQuery(GET_USER, {
+  const { data } = useQuery(GET_USER, {
     variables: { id: userId },
     skip: !userId,
   });
@@ -40,6 +41,7 @@ const App: React.FC = () => {
       setCoins(data.getUser.coins);
     }
   }, [data]);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -51,8 +53,6 @@ const App: React.FC = () => {
     }
   }, [location.pathname]);
 
-
-
   const handleTap = async () => {
     const newCoins = coins + 1;
     setCoins(newCoins);
@@ -60,23 +60,36 @@ const App: React.FC = () => {
     if (userId) {
       await updateUser({ variables: { id: userId, coins: newCoins } });
     }
+
+    // Add animation class
+    const img = document.querySelector('.tap-img');
+    if (img) {
+      img.classList.add('animate-tap');
+      setTimeout(() => {
+        img.classList.remove('animate-tap');
+      }, 500); // Match the duration of the animation
+    }
   };
 
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
-        <h1>TapMe Game</h1>
-        {userId ? (
-          <>
-            <p>User ID: {userId}</p>
-            <h2>💰 {coins}</h2>
-            <img src={tapimg} onClick={handleTap} className='tap-img' >
-            </img>
-          </>
-        ) : (
-          <p>Connecting to wallet...</p>
-        )}
+        <h1>TapMe </h1>
+        <TonConnectButton />
       </header>
+      <div className='App-wrapper'>
+        <div className="App">
+          {userId ? (
+            <>
+              <p>User ID: {userId}</p>
+              <h2>💰 {coins}</h2>
+              <img src={tapimg} onClick={handleTap} className='tap-img' alt="Tap Me!" />
+            </>
+          ) : (
+            <p>Connecting to wallet...</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

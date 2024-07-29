@@ -4,9 +4,11 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
+
 
 const client = new ApolloClient({
-  uri: 'https://tap-me-node.vercel.app/graphql',
+  uri: process.env.REACT_APP_BASE_URL,
   cache: new InMemoryCache(),
 });
 
@@ -16,10 +18,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <ApolloProvider client={client}>
+    <TonConnectUIProvider manifestUrl={process.env.REACT_APP_MANIFEST_URL}>
       <BrowserRouter>
-
-      <App />
+        <App />
       </BrowserRouter>
+    </TonConnectUIProvider>
 
   </ApolloProvider>,
 );

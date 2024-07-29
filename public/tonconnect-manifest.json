@@ -1,0 +1,8 @@
+{
+    "name": "TapMe",
+    "description": "TapMe - Earn coins and redeem for Jettons!",
+    "url": "https://tap-me-webapp-vikramkadus-projects.vercel.app",
+    "icons": ["https://tap-me-webapp-vikramkadus-projects.vercel.app/icon.png"],
+    "bridge": "https://bridge.tonapi.io/bridge"
+  }
+  
